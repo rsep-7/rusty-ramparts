@@ -1,0 +1,42 @@
+name: Development Task
+description: Create a technical or development task
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why?
+      placeholder: Describe the task and its purpose.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: Break down the implementation steps.
+      placeholder: |
+        - [ ] First step
+        - [ ] Second step
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: What conditions must be met to complete this task?
+      placeholder: |
+        - [ ] The implementation works as expected
+        - [ ] Relevant tests pass
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Related or blocking issues, if any.
+      placeholder: "e.g. #12"
+    validations:
+      required: false

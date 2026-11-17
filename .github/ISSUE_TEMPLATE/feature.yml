@@ -1,0 +1,38 @@
+name: Feature
+description: Propose or implement a new feature
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should this feature do?
+      placeholder: Describe the feature and its expected behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this feature needed?
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know when the feature is complete?
+      placeholder: |
+        - [ ] Feature behaves as specified
+        - [ ] Relevant tests are included
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Technical Notes
+      description: Optional implementation ideas or constraints.
+    validations:
+      required: false
