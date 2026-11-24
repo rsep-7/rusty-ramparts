@@ -1,8 +1,9 @@
+mod keybindings;
 mod state;
 
+use keybindings::{Action, is_action_pressed};
 use macroquad::prelude::*;
-
-use crate::state::GameState;
+use state::GameState;
 
 /// Duration of one game logic tick.
 const TICK_DURATION: f32 = 1.0 / 60.0;
@@ -33,34 +34,34 @@ async fn main() {
         // 1. Input
         match game_state {
             GameState::MainMenu => {
-                if is_key_pressed(KeyCode::Escape) {
+                if is_action_pressed(Action::QuitGame) {
                     break;
                 }
-                if is_key_pressed(KeyCode::Key1) {
+                if is_action_pressed(Action::StartGame) {
                     game_state = GameState::Playing;
                 }
             }
 
             GameState::Playing => {
-                if is_key_pressed(KeyCode::Escape) {
+                if is_action_pressed(Action::Pause) {
                     game_state = GameState::Paused;
                 }
-                if is_key_pressed(KeyCode::Key2) {
+                if is_action_pressed(Action::GameOver) {
                     game_state = GameState::GameOver;
                 }
             }
 
             GameState::Paused => {
-                if is_key_pressed(KeyCode::Key1) {
+                if is_action_pressed(Action::Resume) {
                     game_state = GameState::Playing;
                 }
-                if is_key_pressed(KeyCode::Escape) {
+                if is_action_pressed(Action::ExitToMenu) {
                     game_state = GameState::MainMenu;
                 }
             }
 
             GameState::GameOver => {
-                if is_key_pressed(KeyCode::Escape) {
+                if is_action_pressed(Action::ExitToMenu) {
                     game_state = GameState::MainMenu;
                 }
             }
