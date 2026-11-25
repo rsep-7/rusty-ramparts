@@ -1,15 +1,11 @@
-use macroquad::prelude::*;
+//! Keyboard input handling and action mapping.
+//!
+//! Maps physical keybindings to semantic actions and provides
+//! action candidates without evaluating their validity
+//! in the current game state.
 
-/// Actions that can be triggered by player input.
-#[derive(Debug)]
-pub enum Action {
-    ExitToMenu,
-    GameOver,
-    Pause,
-    QuitGame,
-    Resume,
-    StartGame,
-}
+use crate::game::Action;
+use macroquad::prelude::*;
 
 /// Returns the key bound to the given action.
 ///
@@ -28,4 +24,18 @@ pub fn action_to_key(action: Action) -> KeyCode {
 /// Returns true if the action's key was pressed this frame.
 pub fn is_action_pressed(action: Action) -> bool {
     is_key_pressed(action_to_key(action))
+}
+
+/// Returns an iterator over triggered action candidates
+pub fn process_input() -> impl Iterator<Item = Action> {
+    [
+        Action::QuitGame,
+        Action::StartGame,
+        Action::Pause,
+        Action::Resume,
+        Action::GameOver,
+        Action::ExitToMenu,
+    ]
+    .into_iter()
+    .filter(|action| is_action_pressed(*action))
 }
