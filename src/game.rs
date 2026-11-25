@@ -10,8 +10,8 @@ pub struct Game {
     running: bool,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 /// Represents the current state of the game
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum GameState {
     MainMenu,
     Playing,
@@ -97,7 +97,7 @@ impl Game {
     }
 
     /// Advances the game logic by one tick.
-    pub fn update(&mut self, _dt: f32) {}
+    pub fn update(&mut self, _tick_duration: f32) {}
 }
 
 #[cfg(test)]
